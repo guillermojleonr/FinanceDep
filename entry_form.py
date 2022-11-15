@@ -9,10 +9,7 @@ raiz.title("costs entry form")
 miFrame=Frame(raiz)
 miFrame.pack()
 
-""" ------------------ Functionality ------------ 
-Conectar
-Salir
-"""
+""" ------------------ Functionality ------------ """
 
 myConnection = None
 myCursor = None
@@ -34,10 +31,11 @@ def create():
     Producto_value = ProductoEntry.get()
     Item_value = ItemEntry.get()
     Cantidad_value = CantidadEntry.get()
+    Value_value = ValueEntry.get()
 
-    values_list = (Producto_value,Item_value,Cantidad_value)
+    values_list = (Producto_value,Item_value,Cantidad_value,Value_value)
     
-    myCursor.execute("""INSERT INTO usuarios VALUES(NULL,?,?,?);""",values_list) 
+    myCursor.execute("""INSERT INTO product_details VALUES(NULL,?,?,?,?);""",values_list) 
     myConnection.commit()
 
     showinfo("Record created", "You have succesfully created a record")
@@ -82,6 +80,9 @@ ItemLabel.grid(row = 3, column = 1, padx= 10, pady=10, columnspan=2)
 CantidadLabel= Label(miFrame, text="Cantidad")
 CantidadLabel.grid(row = 4, column = 1, padx= 10, pady=10, columnspan=2)
 
+ValueLabel= Label(miFrame, text="Value")
+ValueLabel.grid(row = 5, column = 1, padx= 10, pady=10, columnspan=2)
+
 
 """ ---------------- Fields  -------------"""
 
@@ -96,7 +97,9 @@ ItemEntry.grid(row = 3, column = 3, padx= 10, pady=10, columnspan=4)
 
 CantidadEntry = Entry(miFrame)
 CantidadEntry.grid(row = 4, column = 3, padx= 10, pady=10, columnspan=4)
-CantidadEntry.config(show="*")
+
+ValueEntry = Entry(miFrame)
+ValueEntry.grid(row = 5, column = 3, padx= 10, pady=10, columnspan=4)
 
 """ ---------------- Buttons line  -------------"""
 
